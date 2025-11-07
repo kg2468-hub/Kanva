@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
   <!-- Suporte PWA -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="mobile-web-app-capable" content="yes">
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#2563eb">
-  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="theme-color" content="#2563eb" />
 
-  <title>Kanva v071125.0059 - Editor</title>
+  <!-- Identidade e Manifesto -->
+  <title>Kanva v071125.0059 – Editor</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
 
   <!-- Estilos principais -->
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="css/toolbar.css">
-  <link rel="stylesheet" href="css/layersPanel.css">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="css/toolbar.css" />
+  <link rel="stylesheet" href="css/layersPanel.css" />
 
+  <!-- Registro do Service Worker -->
   <script>
-    // Registro do Service Worker (PWA)
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('sw.js')
         .then(() => console.log('✅ Service Worker registrado'))
@@ -32,12 +33,15 @@
   <!-- Cabeçalhos -->
   <header>Kanva v071125.0059</header>
   <header id="Erik">@erikhenriquesm</header>
-  <p class="report-note">Versão para testes. Caso encontre algum erro, por favor, reporte.</p>
+
+  <p class="report-note">
+    Versão para testes. Caso encontre algum erro, por favor, reporte.
+  </p>
 
   <style>
     .report-note {
       font-size: 12px;
-      color: #B00020;
+      color: #b00020;
       margin-top: 50px;
       position: fixed;
       top: 13px;
@@ -48,25 +52,25 @@
     }
   </style>
 
-  <!-- Área de trabalho principal -->
+  <!-- Área principal de trabalho -->
   <canvas id="kanva" aria-label="Canvas do editor"></canvas>
 
-  <!-- HUD de status (Zoom e Rotação) -->
+  <!-- HUD (Zoom / Rotação) -->
   <div id="hud">
     <span id="zoomDisplay"></span>
     <span id="rotationDisplay"></span>
   </div>
 
-  <!-- Barra de ferramentas inferior -->
+  <!-- Barra de ferramentas -->
   <div class="toolbar-container" role="toolbar" aria-label="Ferramentas">
     <div class="toolbar-scroll" id="toolbar-scroll"></div>
 
     <button class="toolbar-fixed-right" id="btn-layers" aria-label="Camadas" title="Camadas">
       <div class="icon" aria-hidden="true">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <path d="M12 3L3 8l9 5 9-5-9-5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-          <path d="M3 12l9 5 9-5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" opacity="0.85"/>
-          <path d="M3 16l9 5 9-5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" opacity="0.7"/>
+          <path d="M12 3L3 8l9 5 9-5-9-5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
+          <path d="M3 12l9 5 9-5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" opacity="0.85" />
+          <path d="M3 16l9 5 9-5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" opacity="0.7" />
         </svg>
       </div>
       <div class="label">Camadas</div>
