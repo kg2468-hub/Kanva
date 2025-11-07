@@ -1,0 +1,227 @@
+/* Global base */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: #0b0d11;
+  overflow: hidden;
+  font-family: -apple-system, system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  color: #e5e7eb;
+  -webkit-text-size-adjust: 100%;
+}
+* { user-select: none; -webkit-user-select: none; -webkit-tap-highlight-color: transparent; }
+button, a, .tool-btn, .layer-item { touch-action: manipulation; }
+header { position: fixed; top: 10px; left: 12px; font-size: 12px; color: #9ca3af; z-index: 20; pointer-events: none; }
+canvas { display: block; margin: auto; touch-action: none; }
+#hud { position: fixed; top: 10px; right: 12px; font-size: 12px; color: #e5e7eb; text-align: right;
+  background: rgba(17, 24, 39, 0.35); padding: 6px 8px; border-radius: 8px; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); z-index: 20; }
+#hud span + span { margin-left: 10px; }
+
+/* Instagram do desenvolvedor no top */
+#Erik { position: fixed; margin-top: 12px; top: 13px; left: 12px; font-size: 12px; color: #9ca3af; z-index: 20; pointer-events: none; font-family: -apple-system,}
+
+
+/* Home */
+.home .home-container { max-width: 640px; margin: 80px auto 100px; padding: 0 16px; }
+.home h1 { margin: 0 0 6px 0; font-size: 50px; letter-spacing: .3px; }
+.subtitle { color: #9ca3af; margin-bottom: 16px; }
+.size-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 18px; }
+.size-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 10px;
+  display: flex; flex-direction: column; gap: 8px; align-items: center; color: #e5e7eb; }
+.size-card:active { outline: 2px solid #60a5fa; }
+.size-card .thumb { width: 100%; height: 84px; border-radius: 8px; background: #1f2430; border: 1px solid rgba(255,255,255,0.08); }
+.size-card .thumb.square { aspect-ratio: 1/1; }
+.size-card .thumb.vert { background: linear-gradient(180deg,#1f2430 60%,#242a38 60%); }
+.size-card .thumb.horiz { background: linear-gradient(90deg,#1f2430 60%,#242a38 60%); }
+.size-card .label { font-weight: 600; }
+.size-card .hint { color: #9ca3af; font-size: 12px; }
+.custom-size { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 12px;
+  display: grid; grid-template-columns: 1fr 1fr auto; gap: 10px; align-items: end; }
+.custom-size .row { display: flex; flex-direction: column; gap: 6px; }
+.custom-size label { color: #cbd5e1; font-size: 12px; }
+.custom-size input { background: #0f131c; color: #e5e7eb; border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 10px; -webkit-user-select: auto; user-select: auto; }
+.start-btn { height: 42px; border-radius: 10px; border: 0; background: #2563eb; color: #fff; padding: 0 14px; font-weight: 700; }
+.start-btn:active { filter: brightness(1.1); }
+
+
+
+
+/* -----------------------------------------------------
+ * Painéis de controle deslizante (em cima da toolbar)
+ * ----------------------------------------------------- */
+.slider-panel {
+  position: fixed;
+  left: 50%;
+  bottom: 88px; /* um pouco acima da toolbar (84px) */
+  transform: translateX(-50%);
+  background: rgba(20, 22, 27, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 20px 28px;
+  width: min(92vw, 520px);
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
+  display: none;
+  flex-direction: column;
+  align-items: stretch;
+  z-index: 70;
+  animation: fadeInPanel 0.25s ease;
+}
+@keyframes fadeInPanel {
+  from { opacity: 0; transform: translate(-50%, 20px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+.slider-panel.show { display: flex; }
+
+.slider-panel h3 {
+  color: #e5e7eb;
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0 0 12px;
+  text-align: center;
+}
+
+/* === AQUI vem o novo estilo do slider === */
+.slider-panel input[type="range"] {
+  width: 100%;
+  height: 14px;                         /* ← altura do track (antes 6px) */
+  appearance: none;
+  background: linear-gradient(90deg, #60a5fa, #93c5fd);
+  border-radius: 999px;
+  outline: none;
+  cursor: pointer;
+}
+
+/* WebKit (Chrome, Edge, Safari, iOS) */
+.slider-panel input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 28px;                          /* ← tamanho do botão (antes 22px) */
+  height: 28px;
+  background: #fff;
+  border-radius: 50%;
+  border: 2px solid #60a5fa;
+  margin-top: -8px;                     /* centraliza o thumb na trilha */
+  box-shadow: 0 0 6px rgba(96,165,250,0.6);
+}
+.slider-panel input[type="range"]:hover::-webkit-slider-thumb {
+  background: #93c5fd;
+}
+
+/* Firefox */
+.slider-panel input[type="range"]::-moz-range-track {
+  height: 14px;
+  background: linear-gradient(90deg, #60a5fa, #93c5fd);
+  border-radius: 999px;
+}
+.slider-panel input[type="range"]::-moz-range-thumb {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #60a5fa;
+  box-shadow: 0 0 6px rgba(96,165,250,0.6);
+}
+.slider-panel input[type="range"]:hover::-moz-range-thumb {
+  background: #93c5fd;
+}
+
+/* Label do valor */
+.slider-panel .value {
+  text-align: center;
+  color: #9ca3af;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+
+/* -----------------------------------------------------
+ * Painel de seleção de cor (acima da toolbar)
+ * ----------------------------------------------------- */
+.color-panel {
+  position: fixed;
+  left: 50%;
+  bottom: 88px;
+  transform: translateX(-50%);
+  background: rgba(20, 22, 27, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 18px 24px;
+  width: min(92vw, 460px);
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  z-index: 70;
+  animation: fadeInPanel 0.25s ease;
+}
+.color-panel.show { display: flex; }
+.color-panel h3 {
+  color: #e5e7eb;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0 0 12px;
+}
+.color-panel input[type="color"] {
+  width: 100%;
+  height: 48px;
+  border: none;
+  border-radius: 10px;
+  background: none;
+  cursor: pointer;
+}
+.color-panel .value {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+
+
+#font-picker {
+  animation: fadeIn .25s ease;
+}
+.font-item:hover {
+  background: rgba(255,255,255,0.1) !important;
+}
+
+
+.flip-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  margin-top: 10px;
+}
+
+.flip-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 10px 16px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.flip-option:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.flip-option svg {
+  margin-bottom: 6px;
+  stroke: currentColor;
+}
+
+.flip-option.active {
+  background: rgba(96, 165, 250, 0.25);
+  border-color: #60a5fa;
+  color: #60a5fa;
+}

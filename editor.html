@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>Kanva v071125.0059 - Editor</title>
+
+  <!-- Estilos principais -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/toolbar.css">
+  <link rel="stylesheet" href="css/layersPanel.css">
+</head>
+
+<body>
+  <!-- Cabeçalho simples -->
+  <header>Kanva v071125.0059</header>
+<header id="Erik">@erikhenriquesm</header>
+
+ <p class="report-note" > Versão para testes. Caso encontre algum erro, por favor, reporte.</p>
+<style>
+
+	.report-note {
+      font-size: 12px;
+      color: #B00020;
+      margin-top: 50px;
+		position: fixed;  
+		top: 13px; left: 12px;  
+		z-index: 20; 
+		pointer-events: none; font-family: -apple-system,
+    }
+
+</style>
+
+
+  <!-- Área de trabalho principal -->
+  <canvas id="kanva" aria-label="Canvas do editor"></canvas>
+
+  <!-- HUD de status (Zoom e Rotação) -->
+  <div id="hud">
+    <span id="zoomDisplay"></span>
+    <span id="rotationDisplay"></span>
+  </div>
+
+  <!-- Barra de ferramentas inferior -->
+  <div class="toolbar-container" role="toolbar" aria-label="Ferramentas">
+    <div class="toolbar-scroll" id="toolbar-scroll"></div>
+
+    <button class="toolbar-fixed-right" id="btn-layers" aria-label="Camadas" title="Camadas">
+      <div class="icon" aria-hidden="true">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M12 3L3 8l9 5 9-5-9-5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+          <path d="M3 12l9 5 9-5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" opacity="0.85"/>
+          <path d="M3 16l9 5 9-5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" opacity="0.7"/>
+        </svg>
+      </div>
+      <div class="label">Camadas</div>
+    </button>
+  </div>
+
+<div id="text-editor" contenteditable="true" aria-label="Editar texto"></div>
+
+  <!-- Scripts principais -->
+  <script src="js/common.js"></script>
+  <script src="js/canvas.js"></script>
+<script defer src="js/fontPicker.js"></script>
+  <script src="js/toolbar.js"></script>
+  <script src="js/layersPanel.js"></script>
+  <script src="js/editorInit.js"></script>
+</body>
+</html>

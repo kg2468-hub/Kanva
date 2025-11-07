@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Kanva – Home</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    body.home {
+      background: #0b0d11;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      overflow-y: auto;
+      font-family: -apple-system, system-ui, sans-serif;
+    }
+
+    body.home > header {
+      position: static !important;
+      padding: 16px;
+      font-size: 12px;
+      color: #9ca3af;
+      text-align: center;
+    }
+
+    .home-container {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 0 16px 60px;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 4px 0;
+      font-size: 30px;
+      font-weight: 700;
+      color: #e5e7eb;
+    }
+
+    .subtitle {
+      margin: 0 0 10px;
+      font-size: 14px;
+      color: #9ca3af;
+    }
+
+    .report-note {
+      font-size: 12px;
+      color: #B00020;
+      margin-bottom: 20px;
+    }
+
+    .size-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .size-card {
+      padding: 10px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #e5e7eb;
+    }
+
+    .size-card .thumb {
+      width: 100%;
+      height: 60px;
+      border-radius: 8px;
+      background: #111827;
+      margin-bottom: 8px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .size-card .label { font-size: 13px; font-weight: 600; }
+    .size-card .hint { font-size: 11px; color: #9ca3af; }
+
+    .custom-size {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 12px;
+      display: grid;
+      grid-template-columns: 1fr 1fr auto;
+      gap: 10px;
+      align-items: end;
+    }
+
+    .custom-size label {
+      color: #9ca3af;
+      font-size: 11px;
+      text-align: left;
+    }
+
+    .custom-size input {
+      width: 100%;
+      padding: 8px;
+      border-radius: 8px;
+      background: #0f131c;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.1);
+      font-size: 13px;
+    }
+
+    .start-btn {
+      height: 38px;
+      padding: 0 14px;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(90deg, #2563eb, #3b82f6);
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .version-info {
+      margin-top: 12px;
+      font-size: 11px;
+      color: #6b7280;
+    }
+
+    /* 🔹 Layout totalmente empilhado no mobile pequeno */
+    @media (max-width: 420px) {
+      .custom-size {
+        grid-template-columns: 1fr;
+      }
+      .start-btn {
+        width: 100%;
+        margin-top: 8px;
+      }
+      .home-container {
+        padding-bottom: 80px;
+      }
+      .size-card .thumb { height: 50px; }
+    }
+  </style>
+</head>
+
+<body class="home">
+  <header>Kanva v071125.0059 — @erikhenriquesm</header>
+
+  <main class="home-container">
+    <h1>Kanva</h1>
+    <p class="subtitle">Crie um novo projeto</p>
+    <p class="report-note" > Versão para testes. Caso encontre algum erro, por favor, reporte.</p>
+
+    <div class="size-grid">
+      <button class="size-card" data-w="1080" data-h="1080">
+        <div class="thumb square"></div>
+        <div class="label">1080 × 1080</div>
+        <div class="hint">Post Instagram</div>
+      </button>
+
+      <button class="size-card" data-w="1080" data-h="1350">
+        <div class="thumb vert"></div>
+        <div class="label">1080 × 1350</div>
+        <div class="hint">Retrato</div>
+      </button>
+
+      <button class="size-card" data-w="1920" data-h="1080">
+        <div class="thumb horiz"></div>
+        <div class="label">1920 × 1080</div>
+        <div class="hint">Paisagem</div>
+      </button>
+    </div>
+
+    <div class="custom-size">
+      <div class="row">
+        <label for="w">Largura</label>
+        <input id="w" type="number" inputmode="numeric" value="1080">
+      </div>
+      <div class="row">
+        <label for="h">Altura</label>
+        <input id="h" type="number" inputmode="numeric" value="1080">
+      </div>
+      <button id="start" class="start-btn">Criar projeto</button>
+    </div>
+
+    <p class="version-info">Kanva experimental • build 071125</p>
+  </main>
+
+  <script src="js/home.js"></script>
+</body>
+</html>
