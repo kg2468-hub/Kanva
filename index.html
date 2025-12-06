@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Kanva - Editor de Design</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Import Massive Collection of Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abel&family=Abril+Fatface&family=Acme&family=Alfa+Slab+One&family=Alice&family=Alike&family=Allura&family=Amatic+SC:wght@400;700&family=Amita&family=Annie+Use+Your+Telescope&family=Anton&family=Architects+Daughter&family=Archivo+Black&family=Audiowide&family=Bangers&family=Barlow:wght@300;400;700&family=Bebas+Neue&family=Berkshire+Swash&family=Black+Ops+One&family=Boogaloo&family=Bowlby+One+SC&family=Bungee&family=Cabin:wght@400;700&family=Carter+One&family=Caveat:wght@400;700&family=Cedarville+Cursive&family=Changa+One&family=Chewy&family=Cinzel:wght@400;700&family=Comfortaa:wght@300;400;700&family=Comic+Neue:wght@400;700&family=Coming+Soon&family=Concert+One&family=Cookie&family=Courgette&family=Covered+By+Your+Grace&family=Creepster&family=Dancing+Script:wght@400;700&family=Didact+Gothic&family=Dm+Serif+Display&family=Dosis:wght@300;400;700&family=El+Messiri:wght@400;700&family=Exo+2:wght@300;400;700&family=Fjalla+One&family=Fredoka+One&family=Gloria+Hallelujah&family=Great+Vibes&family=Handlee&family=Heebo:wght@300;400;700&family=Indie+Flower&family=Josefin+Sans:wght@300;400;700&family=Julius+Sans+One&family=Kalam:wght@300;400;700&family=Kaushan+Script&family=Lato:wght@300;400;700&family=League+Script&family=Lilita+One&family=Lobster&family=Lobster+Two&family=Lora:ital,wght@0,400;0,700;1,400&family=Luckiest+Guy&family=Marck+Script&family=Merienda:wght@400;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Monoton&family=Montserrat:wght@300;400;700;900&family=Mr+Dafoe&family=Nanum+Pen+Script&family=Neucha&family=Nothing+You+Could+Do&family=Nunito:wght@300;400;700&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@300;400;600;800&family=Orbitron:wght@400;700&family=Oswald:wght@300;400;700&family=Pacifico&family=Parisienne&family=Passion+One&family=Patrick+Hand&family=Permanent+Marker&family=Playball&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poiret+One&family=Poppins:wght@300;400;600;800&family=Press+Start+2P&family=Quicksand:wght@300;400;700&family=Raleway:wght@300;400;700&family=Reenie+Beanie&family=Righteous&family=Roboto+Mono:wght@300;400;700&family=Roboto+Slab:wght@300;400;700&family=Roboto:wght@300;400;700;900&family=Rock+Salt&family=Russo+One&family=Sacramento&family=Satisfy&family=Shadows+Into+Light&family=Sigmar+One&family=Signika:wght@300;400;700&family=Special+Elite&family=Tangerine:wght@400;700&family=Titillium+Web:wght@300;400;700&family=Ubuntu:wght@300;400;700&family=Ultra&family=Unkempt&family=Varela+Round&family=Vollkorn:ital,wght@0,400;0,700;1,400&family=Voltaire&family=Yellowtail&family=Yesteryear&family=Zeyada&display=swap" rel="stylesheet">
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                50: '#f0f9ff',
+                100: '#e0f2fe',
+                500: '#0ea5e9',
+                600: '#0284c7',
+                900: '#0c4a6e',
+              },
+              workspace: {
+                900: '#1a1a1a',
+                800: '#262626',
+                700: '#404040',
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: #1a1a1a;
+        margin: 0;
+        overflow: hidden; /* Prevent body scroll */
+        touch-action: none; /* Disable browser zooming/panning */
+      }
+      .checkerboard {
+        background-image: 
+          linear-gradient(45deg, #ccc 25%, transparent 25%), 
+          linear-gradient(-45deg, #ccc 25%, transparent 25%), 
+          linear-gradient(45deg, transparent 75%, #ccc 75%), 
+          linear-gradient(-45deg, transparent 75%, #ccc 75%);
+        background-size: 20px 20px;
+        background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+        background-color: #fff;
+      }
+      /* Custom scrollbar for layers panel */
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 4px;
+        height: 4px; /* Added height for horizontal scrollbar */
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: #262626; 
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #555; 
+        border-radius: 2px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: #777; 
+      }
+    </style>
+
+<link rel="stylesheet" href="/index.css">
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0"
+  }
+}
+</script>
+  <script type="module" crossorigin src="/assets/index-BN5J_lAz.js"></script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
